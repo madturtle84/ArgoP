@@ -1,0 +1,81 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.cmu.idrift0605.View.MyLocationFragment">
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        tools:context=".MyLocationFragment"
+
+        />
+    <TextView
+
+        android:text="Parking Time"
+        android:id="@+id/parkingTimeLabel"
+
+        android:layout_gravity="start|center_vertical"
+        android:textSize="17sp"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/parkingTimeInput"
+        android:layout_alignTop="@+id/parkingTimeLabel"
+        android:layout_toRightOf="@+id/parkingTimeLabel"
+        android:layout_toEndOf="@+id/parkingTimeLabel"
+        android:inputType="text"
+        android:hint="@string/hint_parking_time"
+        />
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:text="Note"
+        android:layout_gravity="start|center_vertical"
+        android:textSize="17sp"
+        android:id="@+id/noteLabel"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+
+    <EditText
+        android:id="@+id/parkingNoteInput"
+        android:hint="@string/hint_parking_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_below="@+id/noteLabel"
+        android:layout_alignLeft="@+id/noteLabel"
+        android:layout_alignStart="@+id/noteLabel"
+        android:layout_alignRight="@+id/parkingTimeInput"
+        android:layout_alignEnd="@+id/parkingTimeInput" />
+
+    <Button
+        android:id="@+id/button_save_position"
+        android:text="Save Parking Position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/parkingNoteInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+
+</RelativeLayout>

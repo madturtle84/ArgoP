@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Homework 2</string>
+    <string name="hint_parking_time">Enter Parking Time Here</string>
+    <string name="hint_parking_note">Enter Parking Note Here</string>
+    <string name="title_section1">iDrift</string>
+    <string name="title_section2">PVGP</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_idrift">IDrift</string>
+    <string name="title_pvgpevent_list">PVGPEvents</string>
+    <string name="title_pvgpevent_detail">PVGPEvent Detail</string>
+    <string name="Drifting">Drifting is a driving technique where the driver intentionally oversteers, causing loss of traction in the rear wheels or all tires, while maintaining control from entry to exit of a corner. A car is drifting when the rear slip angle is greater than the front slip angle, to such an extent that often the front wheels are pointing in the opposite direction to the turn (e.g. car is turning left, wheels are pointed right or vice versa, also known as opposite lock or counter-steering).</string>
+    <string name="PVGP">The Pittsburgh Vintage Grand Prix is a vintage motor sports car race and 10-day motorsport festival that takes place annually in mid-July in Schenley Park located in Pittsburgh, Pennsylvania, United States. With an estimated 250,000 spectators during the 10 days, the Pittsburgh Vintage Grand Prix is the largest vintage sports car race in the United States.</string>
+    <string name="imageView1">ic_launcher.png</string>
+
+    <string name="button_add_poi">Add Event</string>
+    <string name="button_save_poi">Save</string>
+    <string name="button_add_event">Add Event</string>
+    <string name="button_save_event">Save</string>
+    <string name="address">Place</string>
+    <string name="hint_name">Event Name</string>
+    <string name="hint_street">When, otherwise Today</string>
+    <string name="hint_city">Where, otherwise Current Location</string>
+    <string name="hint_dateTime">When, otherwise Today</string>
+    <string name="hint_location">Where, otherwise Current Location</string>
+    <string name="label_name">Event  : </string>
+    <string name="label_dateTime">When  : </string>
+    <string name="label_location">Where : </string>
+    <string name="confirmTitle">Are You Sure?</string>
+    <string name="confirmMessage">This will permanently delete the EventLog</string>
+    <string name="errorButton">OK</string>
+    <string name="errorTitle">Event Name is Required</string>
+    <string name="errorMessage">You must enter at least Event name</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_delete">Delete</string>
+    <string name="menuitem_add_poi">Add Event</string>
+    <string name="menuitem_edit_poi">Edit Event</string>
+    <string name="menuitem_delete_poi">Delete Event</string>
+    <string name="menuitem_add_event">Add Event</string>
+    <string name="menuitem_edit_event">Edit Event</string>
+    <string name="menuitem_delete_event">Delete Event</string>
+    <string name="menuitem_home">Home</string>
+
+    <string name="menuitem_mylocation">MyLocation</string>
+
+    <string name="menuitem_mapmode">Map</string>
+    <string name="menuitem_search">Search</string>
+    <string name="menuitem_list_event">Event Log</string>
+    <string name="title_activity_add_event">AddEventActivity</string>
+    <string name="title_activity_event_list">EventListActivity</string>
+    <string name="title_activity_view_event">ViewEventActivity</string>
+    <string name="title_activity_drifting">DriftingActivity</string>
+
+
+    <string name="title_item_detail">PVGP Calendar</string>
+    <string name="enable_gps">Enable GPS</string>
+    <string name="enable_gps_dialog">GPS provider not enabled. Would you like to enable it?</string>
+    <string name="latlng">Lat/Long:</string>
+    <string name="unknown">--Unknown--</string>
+    <string name="not_support_gps">GPS provider not supported</string>
+
+    <string name="label_disconnect">Disconnect</string>
+
+    <string name="title_activity_pvgplist">PVGPListActivity</string>
+    <string name="title_activity_pvgpdetail">PVGPdetailActivity</string>
+    <string name="my_location">My Location</string>
+    <string name="mylocation_button">My Location Button</string>
+    <string name="mylocation_layer">My Location Layer</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="icon_desc">Application icon</string>
+    <string name="title_separator_desc">Title separator</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="error">Error</string>
+    <string name="error_format">[Error] %s</string>
+
+    <string name="title_activity_events">EventsActivity</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
