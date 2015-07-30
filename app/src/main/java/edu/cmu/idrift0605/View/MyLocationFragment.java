@@ -22,8 +22,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,12 +141,12 @@ public class MyLocationFragment extends Fragment implements
         String address = coordinateToAddress(userLoc);
 
         /* Put Stuff on the map */
-        Marker currentLocationMarker = map.addMarker(new MarkerOptions()
-                        .position(userLoc)
-                        .title(address)
-                        .snippet("I'm here I'm here!")
-        );
-        currentLocationMarker.showInfoWindow();
+//        Marker currentLocationMarker = map.addMarker(new MarkerOptions()
+//                        .position(userLoc)
+//                        .title(address)
+//                        .snippet("I'm here I'm here!")
+//        );
+//        currentLocationMarker.showInfoWindow();
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(userLoc, 13f)); // Zooming level: 2.0f ~ 21.0f
 
         /* Update User's location every 1 sec */
@@ -214,7 +212,8 @@ public class MyLocationFragment extends Fragment implements
     private void saveParkingPosition(){
 
         /* Save data to database */
-        ParkingData.parkingPosition = getUserPosition();
+        //ParkingData.parkingPosition = getUserPosition();
+        ParkingData.parkingPosition = new LatLng(40.4424925,-79.9425528); // Test value at CMU main campus
         ParkingData.parkingNote = mParkingNoteInput.getText().toString();
         ParkingData.parkingTime = mParkingTimeInput.getText().toString();
 
@@ -222,5 +221,7 @@ public class MyLocationFragment extends Fragment implements
         Toast.makeText(getActivity(),"Saving coordinate:"+ParkingData.parkingPosition.toString(), Toast.LENGTH_SHORT).show();
         Log.i("[ButtonRuntimeV] ", "Saving coordinate: "+ ParkingData.parkingPosition.toString());
     }
+
+
 
 }

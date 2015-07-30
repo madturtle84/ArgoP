@@ -31,6 +31,7 @@ import java.util.TimerTask;
 
 import edu.cmu.idrift0605.Model.ParkingData;
 import edu.cmu.idrift0605.R;
+import edu.cmu.idrift0605.Utilities.DrawRouteTask;
 
 public class FindPositionFragment extends Fragment implements
         OnMapReadyCallback,
@@ -44,6 +45,7 @@ public class FindPositionFragment extends Fragment implements
     private boolean mIsFocused=true;
     private TextView mParkingTimeView;
     private TextView mParkingNoteView;
+    private Button mGetDirectionButton;
 
     public FindPositionFragment() {
         // Required empty public constructor
@@ -63,16 +65,18 @@ public class FindPositionFragment extends Fragment implements
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Button directionButton = (Button) view.findViewById(R.id.button_get_direction);
-
-        directionButton.setOnClickListener(new View.OnClickListener() {
+        /* Set references for UI elements */
+        mParkingNoteView = (TextView) view.findViewById(R.id.parkingNoteRecord);
+        mParkingTimeView = (TextView) view.findViewById(R.id.parkingTimeRecord);
+        mGetDirectionButton = (Button) view.findViewById(R.id.button_get_direction);
+        mGetDirectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawDirectionOnMap();
             }
         });
 
-
+        refreshParkingData();
     }
 
     public void onButtonPressed(String id) {
@@ -99,13 +103,6 @@ public class FindPositionFragment extends Fragment implements
 
     @Override
     public void onClick(View v) {
-//        Log.i("[Button] ", "Pressed!!!!!!!!!!!!!!!");
-//        switch (v.getId()){
-//            case R.id.button_save_position:
-//                Toast.makeText(getActivity(),"Saving coordinate:"+getUserPosition().toString(), Toast.LENGTH_SHORT).show();
-//                Log.i("[Button] ", "Saving coordinate: "+ getUserPosition().toString());
-//                break;
-//        }
     }
 
     /**
@@ -137,13 +134,6 @@ public class FindPositionFragment extends Fragment implements
         /* Reverse Geocoding: Transfer coordinate into address */
         String address = coordinateToAddress(userLoc);
 
-        /* Put Stuff on the map */
-        Marker currentLocationMarker = map.addMarker(new MarkerOptions()
-                        .position(userLoc)
-                        .title(address)
-                        .snippet("I'm here I'm here!")
-        );
-        currentLocationMarker.showInfoWindow();
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(userLoc, 13f)); // Zooming level: 2.0f ~ 21.0f
 
         /* Update User's location every 1 sec */
@@ -181,8 +171,7 @@ public class FindPositionFragment extends Fragment implements
         mIsFocused = hasFocus;
 
         /* Update Data on UI */
-        mParkingNoteView.setText(ParkingData.parkingNote);
-        mParkingTimeView.setText(ParkingData.parkingTime);
+        refreshParkingData();
 
         if(mMap!=null) mMap.setMyLocationEnabled(mIsFocused);
     }
@@ -206,7 +195,37 @@ public class FindPositionFragment extends Fragment implements
     }
 
     private void drawDirectionOnMap(){
+        new DrawRouteTask(mMap, getUserPosition(),mParkingPositionMarker.getPosition()).execute();
 
+    }
+
+    private void refreshParkingData(){
+        if(mParkingNoteView==null || mParkingTimeView==null) return;
+        mParkingTimeView.setText(ParkingData.parkingTime);
+        mParkingNoteView.setText(ParkingData.parkingNote);
+        updateParkingPosition();
+    }
+
+    Marker mParkingPositionMarker;
+    private void updateParkingPosition(){
+        /* If map is not ready */
+        if(mMap==null) return;
+        /* If is first time */
+        if(mParkingPositionMarker==null){
+            mParkingPositionMarker = mMap.addMarker(new MarkerOptions()
+                            .position(ParkingData.parkingPosition)
+                            .title("Your car is here")
+                            .snippet("...")
+            );
+        }
+        /* Normal case. Just update the marker position */
+        else{
+            mParkingPositionMarker.setPosition(ParkingData.parkingPosition);
+        }
+        mParkingPositionMarker.showInfoWindow();
+    }
+
+    private void shareAtSocialMedia(){
 
     }
 

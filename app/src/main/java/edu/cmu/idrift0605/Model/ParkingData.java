@@ -12,7 +12,7 @@ public class ParkingData {
     /* DOTO: change this to sqlite */
     static public String parkingTime = "";
     static public String parkingNote = "";
-    static public LatLng parkingPosition;
+    static public LatLng parkingPosition=new LatLng(40.4424925,-79.9425528); // Test value at CMU main campus;
 
 
 
