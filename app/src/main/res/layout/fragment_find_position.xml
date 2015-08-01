@@ -13,70 +13,88 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         tools:context=".FindPositionFragment"
+        android:layout_below="@+id/relativeLayout" />
 
-        />
-    <TextView
 
-        android:text="Parking Time"
-        android:id="@+id/parkingTimeLabel"
-        android:layout_gravity="start|center_vertical"
-        android:textSize="17sp"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentTop="true"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
-    <TextView
-
-        android:text="(Place holder time)"
-        android:id="@+id/parkingTimeRecord"
-        android:layout_gravity="start|center_vertical"
-        android:textSize="17sp"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/parkingTimeLabel"
-        android:layout_alignLeft="@+id/button_get_direction"
-        android:layout_alignStart="@+id/button_get_direction" />
-
-    <TextView
-        android:id="@+id/noteLabel"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:text="Note"
-        android:layout_gravity="start|center_vertical"
-        android:textSize="17sp"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
-
-    <TextView
-        android:id="@+id/parkingNoteRecord"
-        android:text="(placeholder data)"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|center_vertical"
-        android:textSize="17sp"
-        android:layout_below="@+id/parkingTimeRecord"
-        android:layout_alignLeft="@+id/parkingTimeRecord"
-        android:layout_alignStart="@+id/parkingTimeRecord"
-        android:layout_alignBottom="@+id/noteLabel" />
-
-    <Button
-        android:id="@+id/button_get_direction"
-        android:text="Get Direction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/noteLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:background="#ff28c772"
+        android:id="@+id/relativeLayout">
 
 
+        <TextView
 
+            android:text="Parking Time"
+            android:id="@+id/parkingTimeLabel"
+            android:layout_gravity="start|center_vertical"
+            android:textSize="17sp"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+        <TextView
+
+            android:text="(Place holder time)"
+            android:id="@+id/parkingTimeRecord"
+            android:layout_gravity="start|center_vertical"
+            android:textSize="17sp"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/parkingTimeLabel"
+            android:layout_alignLeft="@+id/button_get_direction"
+            android:layout_alignStart="@+id/button_get_direction" />
+
+        <TextView
+            android:id="@+id/noteLabel"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:text="Note"
+            android:layout_gravity="start|center_vertical"
+            android:textSize="17sp"
+            android:layout_marginTop="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/parkingNoteRecord"
+            android:text="(placeholder data)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:textSize="17sp"
+            android:layout_below="@+id/parkingTimeRecord"
+            android:layout_alignLeft="@+id/parkingTimeRecord"
+            android:layout_alignStart="@+id/parkingTimeRecord"
+            android:layout_alignBottom="@+id/noteLabel" />
+
+        <Button
+            android:id="@+id/button_get_direction"
+            android:text="Get Direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noteLabel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
+        <Button
+            android:id="@+id/button_share"
+            android:text="Share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/button_get_direction" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,16 +1,14 @@
 package edu.cmu.idrift0605;
 
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-//import android.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +16,8 @@ import android.view.MenuItem;
 import edu.cmu.idrift0605.View.FindPositionFragment;
 import edu.cmu.idrift0605.View.MyLocationFragment;
 import edu.cmu.idrift0605.View.SensorInfoFragment;
+
+//import android.app.Fragment;
 
 public class HomeActivity extends ActionBarActivity
         implements
@@ -27,11 +27,19 @@ public class HomeActivity extends ActionBarActivity
             FindPositionFragment.OnFragmentInteractionListener
 {
 
-    SectionsPagerAdapter mSectionsPagerAdapter;
-    ViewPager mViewPager;
-    MyLocationFragment mMyLocationFragment =null;
-    FindPositionFragment mFindPositionFragment=null;
-    SensorInfoFragment mSensorInfoFragment =null;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
+    private MyLocationFragment mMyLocationFragment =null;
+    private FindPositionFragment mFindPositionFragment=null;
+    private SensorInfoFragment mSensorInfoFragment =null;
+    static private HomeActivity sInstance;
+
+    static public HomeActivity getSingleton(){
+        if(sInstance==null) {
+            Log.e("[getSingleton] ", "Call singleton before created");
+        }
+        return sInstance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,7 @@ public class HomeActivity extends ActionBarActivity
         setContentView(R.layout.activity_home);
 
         /* Set up Fragments */
+        sInstance = this;
         mSensorInfoFragment = new SensorInfoFragment();
         mMyLocationFragment = new MyLocationFragment();
         mFindPositionFragment = new FindPositionFragment();

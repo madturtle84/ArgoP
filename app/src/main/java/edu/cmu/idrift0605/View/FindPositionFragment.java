@@ -154,7 +154,7 @@ public class FindPositionFragment extends Fragment implements
                 updateUserLocation();
             }
         };
-        mUserLocationTimer.schedule(timerTask,2000);
+        mUserLocationTimer.schedule(timerTask, 2000);
     }
 
     private LatLng getUserPosition(){
@@ -195,6 +195,10 @@ public class FindPositionFragment extends Fragment implements
     }
 
     private void drawDirectionOnMap(){
+        if(mParkingPositionMarker==null) {
+            Log.d("[DrawDirection] ", "Marker not found...Please try later.");
+            return;
+        }
         new DrawRouteTask(mMap, getUserPosition(),mParkingPositionMarker.getPosition()).execute();
 
     }

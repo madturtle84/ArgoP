@@ -2,7 +2,10 @@ package edu.cmu.idrift0605.View;
 
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -24,12 +27,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import edu.cmu.idrift0605.HomeActivity;
 import edu.cmu.idrift0605.Model.ParkingData;
 import edu.cmu.idrift0605.R;
+import edu.cmu.idrift0605.Utilities.AlarmReceiver;
+import edu.cmu.idrift0605.Utilities.HWUtilities;
 
 public class MyLocationFragment extends Fragment implements
         OnMapReadyCallback,
@@ -60,6 +67,7 @@ public class MyLocationFragment extends Fragment implements
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
         mapFragment.getMapAsync(this);
 
         mParkingNoteInput = (EditText) view.findViewById(R.id.parkingNoteInput);
@@ -70,7 +78,7 @@ public class MyLocationFragment extends Fragment implements
             @Override
             public void onClick(View v) {
                 saveParkingPosition();
-
+                HWUtilities.hideSoftKeyboard(HomeActivity.getSingleton());
             }
         });
 
@@ -217,11 +225,32 @@ public class MyLocationFragment extends Fragment implements
         ParkingData.parkingNote = mParkingNoteInput.getText().toString();
         ParkingData.parkingTime = mParkingTimeInput.getText().toString();
 
+        setupParkingAlarm();
+
+
         /* User Feedback */
         Toast.makeText(getActivity(),"Saving coordinate:"+ParkingData.parkingPosition.toString(), Toast.LENGTH_SHORT).show();
         Log.i("[ButtonRuntimeV] ", "Saving coordinate: "+ ParkingData.parkingPosition.toString());
     }
+    /* Setup the notification that reminds user their parking time limit */
+    AlarmManager mAlarmManager;
 
+    private void setupParkingAlarm() {
+        /* Create a calendar and set its time to the time when the alarm sound */
+        Calendar calendar = Calendar.getInstance(); //Log.d("[Alarm] ", "Current time: " + calendar.getTime().toString());
+        int sec = Integer.parseInt(mParkingTimeInput.getText().toString());
+        int min =0 ;
 
+        calendar.set(Calendar.SECOND, calendar.get(Calendar.SECOND) + sec); //TODO: Replace the placeholder time.
+        calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + min); //TODO: Replace the placeholder time.
+
+        /* Set the intent that define the action when time's up*/
+        Intent myIntent = new Intent(getActivity(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, myIntent, 0);
+
+        /* Set the alarm */
+        mAlarmManager = (AlarmManager) getActivity().getSystemService(Activity.ALARM_SERVICE);
+        mAlarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
 
 }
